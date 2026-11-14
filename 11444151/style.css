@@ -1,0 +1,472 @@
+:root {
+  --bg: #fbeeee;
+  --card: #fffaf8;
+  --pink: #e8a0aa;
+  --pink-light: #f7d4d8;
+  --pink-deep: #d9778a;
+  --brown: #5b3a2e;
+  --brown-light: #8a6150;
+  --cream: #f3e3d8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* [特效] 點擊導覽列時平滑捲動到對應區塊 — 使用 scroll-behavior: smooth */
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--brown);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.9;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.site-header {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 80px 20px 70px;
+  background: linear-gradient(180deg, var(--pink-light), var(--bg));
+}
+
+.site-header::before,
+.site-header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--pink);
+  opacity: 0.35;
+  /* [特效] 標題背景的圓形上下緩慢漂浮 — 使用 @keyframes + animation */
+  animation: float-circle 6s ease-in-out infinite;
+}
+
+.site-header::before {
+  width: 220px;
+  height: 220px;
+  top: -70px;
+  left: -50px;
+}
+
+.site-header::after {
+  width: 160px;
+  height: 160px;
+  bottom: -40px;
+  right: 8%;
+  animation-delay: 2s;
+}
+
+@keyframes float-circle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(18px);
+  }
+}
+
+.header-sub {
+  position: relative;
+  color: var(--pink-deep);
+  letter-spacing: 6px;
+  font-size: 13px;
+}
+
+.header-name {
+  position: relative;
+  margin: 6px 0 14px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 52px;
+  letter-spacing: 10px;
+}
+
+.header-slogan {
+  position: relative;
+  display: inline-block;
+  padding: 6px 26px;
+  background: var(--brown);
+  color: var(--pink-light);
+  border-radius: 30px;
+  font-size: 16px;
+}
+
+.site-nav {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+  width: fit-content;
+  max-width: 94%;
+  margin: -24px auto 0;
+  background: var(--card);
+  border: 2px solid var(--brown);
+  border-radius: 40px;
+  box-shadow: 4px 4px 0 var(--pink);
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px 10px;
+}
+
+.nav-list a {
+  display: block;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 15px;
+  /* [特效] 滑鼠移到導覽文字時背景變粉色 — 使用 transition */
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-list a:hover {
+  background: var(--pink);
+  color: #ffffff;
+}
+
+.main-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section-box {
+  margin: 40px 0;
+  padding: 34px;
+  background: var(--card);
+  border: 2px solid var(--brown);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0 var(--pink-light);
+}
+
+.section-title {
+  margin-bottom: 24px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 26px;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 8px;
+  margin-top: 4px;
+  background: var(--pink);
+  border-radius: 4px;
+}
+
+.sub-title {
+  margin: 22px 0 14px;
+  font-size: 17px;
+  color: var(--pink-deep);
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.about-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--pink);
+  outline: 3px solid var(--brown);
+  outline-offset: 5px;
+  /* [特效] 滑鼠移到個人照片時放大 — 使用 transition + transform:scale */
+  transition: transform 0.4s;
+}
+
+.about-photo:hover {
+  transform: scale(1.08);
+}
+
+.about-school {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 2px 18px;
+  background: var(--pink-light);
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.about-text {
+  max-width: 680px;
+  text-align: left;
+}
+
+.about-text .about-school {
+  display: table;
+  margin: 0 auto 12px;
+}
+
+.about-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  margin: 16px 0;
+  color: var(--brown-light);
+  font-size: 15px;
+}
+
+.about-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 28px;
+  border: 2px solid var(--brown);
+  border-radius: 30px;
+  /* [特效] 滑鼠移到按鈕時上浮並變色 — 使用 transition + transform:translateY */
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-fill {
+  background: var(--brown);
+  color: var(--pink-light);
+}
+
+.btn-line {
+  background: transparent;
+  color: var(--brown);
+}
+
+.btn:hover {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.ring-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 24px;
+}
+
+.ring-item {
+  text-align: center;
+  width: 120px;
+}
+
+.ring {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  /* 圓環畫法參考 W3Schools「CSS Gradients - conic-gradient」語法 https://www.w3schools.com/css/css3_gradients_conic.asp，並自行改寫 */
+  background: conic-gradient(var(--pink-deep) calc(var(--percent) * 1%), var(--cream) 0);
+  /* [特效] 滑鼠移到技能圓環時放大 — 使用 transition + transform:scale */
+  transition: transform 0.3s;
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border-radius: 50%;
+  background: var(--card);
+}
+
+.ring:hover {
+  transform: scale(1.12);
+}
+
+.ring-num {
+  position: relative;
+  font-weight: bold;
+}
+
+.ring-label {
+  font-size: 14px;
+}
+
+.bar-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.bar-label {
+  width: 150px;
+  font-size: 15px;
+}
+
+.bar {
+  flex: 1;
+  height: 16px;
+  background: var(--cream);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: var(--percent);
+  background: linear-gradient(90deg, var(--pink), var(--pink-deep));
+  border-radius: 10px;
+  /* [特效] 頁面載入時進度條由左向右展開 — 使用 @keyframes + animation */
+  animation: bar-grow 1.5s ease-out;
+}
+
+@keyframes bar-grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--percent);
+  }
+}
+
+.exp-item {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  margin-left: 10px;
+  padding: 0 0 34px 30px;
+  border-left: 3px solid var(--pink);
+}
+
+.exp-item:last-of-type {
+  padding-bottom: 0;
+}
+
+.exp-item::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: -11px;
+  width: 19px;
+  height: 19px;
+  background: var(--card);
+  border: 4px solid var(--brown);
+  border-radius: 50%;
+}
+
+.exp-photo {
+  width: 260px;
+  height: 170px;
+  object-fit: cover;
+  border: 2px solid var(--brown);
+  border-radius: 14px;
+  flex-shrink: 0;
+  /* [特效] 滑鼠移到經歷照片時微微旋轉放大 — 使用 transition + transform */
+  transition: transform 0.4s;
+}
+
+.exp-photo:hover {
+  transform: scale(1.05) rotate(-1.5deg);
+}
+
+.exp-period {
+  display: inline-block;
+  padding: 0 14px;
+  background: var(--pink-light);
+  border-radius: 20px;
+  color: var(--brown-light);
+  font-size: 13px;
+}
+
+.exp-title {
+  margin: 6px 0 8px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 19px;
+}
+
+.exp-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--pink-deep);
+  font-weight: bold;
+  /* [特效] 滑鼠移到連結時向右位移 — 使用 transition + transform:translateX */
+  transition: transform 0.3s;
+}
+
+.exp-link:hover {
+  transform: translateX(8px);
+}
+
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-link {
+  display: block;
+  padding: 10px 26px;
+  background: var(--pink-light);
+  border: 2px solid var(--brown);
+  border-radius: 30px;
+  /* [特效] 滑鼠移到聯絡按鈕時反色 — 使用 transition */
+  transition: background 0.3s, color 0.3s;
+}
+
+.contact-link:hover {
+  background: var(--brown);
+  color: var(--pink-light);
+}
+
+.site-footer {
+  padding: 26px;
+  background: var(--brown);
+  color: var(--pink-light);
+  text-align: center;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .section-box {
+    padding: 22px 18px;
+  }
+
+  .exp-item {
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 20px;
+  }
+
+  .exp-photo {
+    width: 100%;
+    height: auto;
+  }
+
+  .bar-label {
+    width: 110px;
+  }
+
+  .header-name {
+    font-size: 38px;
+  }
+}
